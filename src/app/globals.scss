@@ -1,0 +1,26 @@
+$primary-color: #6200ea;
+$secondary-color: #03dac6;
+$background-color: #f5f5f5;
+$text-color: #212121;
+$button-hover-color: darken($primary-color, 10%);
+$input-border-color: #ccc;
+$input-focus-border-color: $secondary-color;
+$main-bg-color: #ffffff;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
