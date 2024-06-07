@@ -2,6 +2,7 @@
 import axios from "axios";
 import styles from "./page.module.scss";
 import { useEffect, useState } from "react";
+import RunawayButton from "./runawaybutton/runaway-button";
 const TICKETS_NUMBER = 121;
 
 export default function Home() {
@@ -70,6 +71,8 @@ export default function Home() {
           </div>
         </div>
       )}
+      <RunawayButton />
+
     </main>
   );
 }
