@@ -47,7 +47,7 @@ export default function Home() {
     <main className={styles.main}>
       <div>
         <h1>Tickets</h1>
-        <h2>Resarve tickets reserve for 5 minutes</h2>
+        <h2>Resarve tickets for 5 minutes</h2>
         <p>Tickets left: {TICKETS_NUMBER}</p>
 
         <input value={ticketsNumber} onChange={handleInputChange} placeholder="Choose tickets number" type="number" />
