@@ -6,8 +6,8 @@ const TICKETS_NUMBER = 121;
 
 export default function Home() {
   const [ticketsNumber, setTicketsNumber] = useState(1);
-  const [ticketsLeft, setTicketsLeft] = useState(TICKETS_NUMBER);
-  const [ticketsPrice, setTicketsPrice] = useState(10)
+  const [ticketsPrice, setTicketsPrice] = useState(10);
+  const [isPopupVisible, setIsPopupVisible] = useState(false)
 
   const handleInputChange = (e: any) => {
     const number = Number(e.target.value);
@@ -15,7 +15,6 @@ export default function Home() {
     if (number >= 0 && number <= TICKETS_NUMBER + 1) {
       setTicketsNumber(e.target.value);
     }
-
   }
 
   useEffect(() => {
@@ -31,12 +30,17 @@ export default function Home() {
       setTicketsPrice(7)
     }
   }, [ticketsNumber]);
-  const handleButtonClick = () => {
-    console.log(typeof ticketsNumber, ticketsNumber);
+
+  const handleButtonClick = async () => {
     try {
-      axios.post('/test-api', { ticketsNumber: Number(ticketsNumber) + 1 })
+      await axios.post('/test-api', { ticketsNumber: Number(ticketsNumber) + 1 })
     } catch (e) { }
+
+    setIsPopupVisible(true);
   }
+
+
+  const handleClosePopup = () => { window.location.reload(); }
 
 
   return (
@@ -49,12 +53,23 @@ export default function Home() {
         <input value={ticketsNumber} onChange={handleInputChange} placeholder="Choose tickets number" type="number" />
 
         <p>Price: {ticketsPrice}</p>
-        <p>Total Price:{ticketsNumber * ticketsPrice}</p>
+        <p>Total Price: {ticketsNumber * ticketsPrice}</p>
         <button onClick={handleButtonClick} className={styles.button}>
           RESERVE
         </button>
       </div>
       <p className={styles.invisible}>TODO: Add Footer</p>
+      {isPopupVisible && (
+        <div className={styles['popup-overlay']}>
+          <div className={styles.popup}>
+            <h2>Reservation Successful!</h2>
+            <p>Your tickets have been reserved for 5 minutes.</p>
+            <button onClick={handleClosePopup} className={styles['close-button']}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
