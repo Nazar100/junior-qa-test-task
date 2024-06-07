@@ -15,6 +15,9 @@ const RunawayButton = () => {
       className="runaway-button" 
       style={{ top: `${position.top}px`, left: `${position.left}px` }}
       onMouseEnter={handleMouseEnter}
+      onClick={()=>{
+        alert('You won')
+      }}
     >
       GET A JOB!
     </button>
